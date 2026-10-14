@@ -1,0 +1,5 @@
+filename,scenario,label,attack_start,attack_end,target_client_mac,real_bssid,evil_twin_bssid
+evil_twin_only.pcap,evil_twin,attack,1789844120.302438,1789844215.461404,,c4:e9:0a:50:ef:e6,4e:9f:eb:dc:45:35
+deauth_only.pcap,deauth,attack,1789844549.856160,1789844558.332647,fc:01:7c:73:57:81,c4:e9:0a:50:ef:e6,
+combined_attack.pcap,evil_twin_deauth,attack,1789844850.170465,1789844959.525443,fc:01:7c:73:57:81,c4:e9:0a:50:ef:e6,ce:87:03:cc:58:96
+benign_home.pcap,benign,benign,,,,a4:2b:b0:01:e7:e0,

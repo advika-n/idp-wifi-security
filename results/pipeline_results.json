@@ -1,0 +1,124 @@
+{
+  "evil_twin_only.pcap": [
+    {
+      "detector": "fingerprinting",
+      "timestamp": 1789844120.302438,
+      "client_mac": null,
+      "bssid": "4e:9f:eb:dc:45:35",
+      "severity": 0.85,
+      "reason": "Rogue AP for SSID 'dlink' (severity 0.85): bssid +0.40 (expected c4:e9:0a:50:ef:e6 got 4e:9f:eb:dc:45:35); security +0.25 (OPEN vs WPA); oui +0.20 (4E:9F:EB vs C4:E9:0A)",
+      "related_bssid": "c4:e9:0a:50:ef:e6",
+      "details": {
+        "contributions": {
+          "bssid": 0.4,
+          "security": 0.25,
+          "oui": 0.2
+        }
+      }
+    }
+  ],
+  "deauth_only.pcap": [
+    {
+      "detector": "deauth",
+      "timestamp": 1789844549.902007,
+      "client_mac": "fc:01:7c:73:57:81",
+      "bssid": "c4:e9:0a:50:ef:e6",
+      "severity": 1.0,
+      "reason": "deauth burst on c4:e9:0a:50:ef:e6: 2564 frames in 8.5s (peak 513 per 1s), unicast, victim fc:01:7c:73:57:81 (2564 frames)",
+      "related_bssid": null,
+      "details": {
+        "frames": 2564,
+        "peak_rate": 513,
+        "window": 1.0,
+        "burst_start": 1789844549.85616,
+        "burst_end": 1789844558.332647,
+        "broadcast_frames": 0,
+        "kind": "unicast",
+        "victims": [
+          "fc:01:7c:73:57:81"
+        ],
+        "victim_frames": 2564
+      }
+    }
+  ],
+  "combined_attack.pcap": [
+    {
+      "detector": "fingerprinting",
+      "timestamp": 1789844850.170465,
+      "client_mac": null,
+      "bssid": "ce:87:03:cc:58:96",
+      "severity": 0.85,
+      "reason": "Rogue AP for SSID 'dlink' (severity 0.85): bssid +0.40 (expected c4:e9:0a:50:ef:e6 got ce:87:03:cc:58:96); security +0.25 (OPEN vs WPA); oui +0.20 (CE:87:03 vs C4:E9:0A)",
+      "related_bssid": "c4:e9:0a:50:ef:e6",
+      "details": {
+        "contributions": {
+          "bssid": 0.4,
+          "security": 0.25,
+          "oui": 0.2
+        }
+      }
+    },
+    {
+      "detector": "deauth",
+      "timestamp": 1789844885.350606,
+      "client_mac": "fc:01:7c:73:57:81",
+      "bssid": "c4:e9:0a:50:ef:e6",
+      "severity": 1.0,
+      "reason": "deauth burst on c4:e9:0a:50:ef:e6: 5132 frames in 16.9s (peak 538 per 1s), unicast, victim fc:01:7c:73:57:81 (5132 frames)",
+      "related_bssid": null,
+      "details": {
+        "frames": 5132,
+        "peak_rate": 538,
+        "window": 1.0,
+        "burst_start": 1789844885.303738,
+        "burst_end": 1789844902.230494,
+        "broadcast_frames": 0,
+        "kind": "unicast",
+        "victims": [
+          "fc:01:7c:73:57:81"
+        ],
+        "victim_frames": 5132
+      }
+    },
+    {
+      "detector": "fusion",
+      "timestamp": 1789844885.350606,
+      "client_mac": "fc:01:7c:73:57:81",
+      "bssid": "ce:87:03:cc:58:96",
+      "severity": 0.85,
+      "reason": "weighted score 0.85 >= 0.50 (fingerprinting 0.34 + deauth 0.30 + sequence 0.21) from 3 alerts within 120s",
+      "related_bssid": "c4:e9:0a:50:ef:e6",
+      "details": {
+        "score": 0.85,
+        "threshold": 0.5,
+        "contributions": {
+          "fingerprinting": 0.34,
+          "deauth": 0.3,
+          "sequence": 0.21
+        },
+        "weights": {
+          "fingerprinting": 0.4,
+          "deauth": 0.3,
+          "sequence": 0.3
+        },
+        "n_alerts": 3
+      }
+    },
+    {
+      "detector": "sequence",
+      "timestamp": 1789844897.898962,
+      "client_mac": "fc:01:7c:73:57:81",
+      "bssid": "ce:87:03:cc:58:96",
+      "severity": 0.7,
+      "reason": "BSSID changed on reconnect: was associated to c4:e9:0a:50:ef:e6, now authenticating with ce:87:03:cc:58:96 (after a disconnect)",
+      "related_bssid": "c4:e9:0a:50:ef:e6",
+      "details": {
+        "anomaly": "bssid_change",
+        "from": "c4:e9:0a:50:ef:e6",
+        "to": "ce:87:03:cc:58:96",
+        "after_disconnect": true
+      }
+    }
+  ],
+  "benign_home.pcap": []
+}
